@@ -1,0 +1,14 @@
+def isPalindrome(x: int) -> bool:
+    # Step 1: Negative numbers and numbers ending with zero (except for 0 itself) are not palindromes.
+    if x < 0 or (x % 10 == 0 and x != 0):
+        return False
+    
+    # Step 2: Reverse the second half of the number and compare with the first half.
+    reversed_half = 0
+    while x > reversed_half:
+        reversed_half = reversed_half * 10 + x % 10
+        x //= 10
+    
+    # Step 3: If the number is of odd length, we can discard the middle digit by reversed_half // 10
+    return x == reversed_half or x == reversed_half // 10
+
